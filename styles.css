@@ -1,0 +1,405 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: "Futura";
+  src: url("futura-now-headline/FuturaNowHeadlineMedium.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Futura";
+  src: url("futura-now-headline/FuturaNowHeadlineBold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+h1, h2, h3, p {
+  font-family: "Futura", sans-serif;
+  margin: 0;
+}
+
+h1 {
+    font-weight: 700;
+    font-size: 125px;
+    color: #b8f9ff;
+    letter-spacing: -8px;
+
+}
+
+h2 {
+    font-weight: 600;
+    font-size: 64px;
+    color: #b8f9ff;
+
+}
+
+h3 {
+ font-weight: 600;
+    font-size: 24px;
+    color: #b8f9ff;
+}
+
+p {
+  font-size: 18px;
+    color: #000;
+
+}
+
+.header {
+    padding-top: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.hero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 6rem 0;
+}
+
+.hero-image {
+    height: 100%;
+    border-radius: 10px;
+}
+
+.hero-middle {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  margin-top: 60px;
+  position: relative;
+}
+
+.hero-image {
+  width: 400px;
+  border-radius: 16px;
+  transition: transform 0.15s ease-out;
+  will-change: transform;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-image:not(:first-child) {
+  margin-left: -60px; 
+}
+
+.hero-image:nth-child(1) {
+  transform: rotate(-5deg) translateY(20px);
+  z-index: 1;
+}
+.hero-image:nth-child(2) {
+  transform: rotate(2deg) translateY(-10px);
+  z-index: 2;
+}
+.hero-image:nth-child(3) {
+  transform: rotate(-3deg) translateY(10px);
+  z-index: 3;
+}
+.hero-image:nth-child(4) {
+  transform: rotate(4deg) translateY(-5px);
+  z-index: 4;
+}
+
+.bottom {
+    display: flex;
+    justify-content: space-between; /* pushes container left and about right */
+    align-items: center;
+    width: 100%; /* make sure it spans the full width */
+    padding: 0 48px; /* optional: horizontal padding */
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    gap: 8px; /* space between pulse button and text */
+    background: #0779fe;
+    padding: 8px 16px;
+}
+
+.about {
+    display: flex;
+    align-items: center;
+    padding: 8px 16px;
+}
+
+.circle {
+    display: flex;
+    background-color: #011f7f;
+    height: 48px;
+    width: 48px;
+    border-radius: 50%;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+
+.pulse-button {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: #4ba754;
+  position: relative;
+  animation: pulse 1.5s infinite;
+}
+
+
+
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(110, 209, 114, 0.7); /* lighter green */
+  }
+  70% {
+    transform: scale(1.05);
+    box-shadow: 0 0 0 20px rgba(75, 167, 84, 0); /* fade out */
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(75, 167, 84, 0);
+  }
+}
+
+.work {
+  display: flex;
+  margin-top: 12rem;
+  flex-direction: column;
+}
+
+.work-title {
+  justify-self: center;
+  align-self: center;
+}
+
+/* .embla__viewport {
+  overflow: hidden;
+  width: 100%;
+  touch-action: pan-y;
+} */
+
+/* Embla viewport and container setup */
+.embla {
+  max-width: 100%;
+}
+
+
+/* .embla__viewport {
+  overflow: hidden;
+  width: 100%;
+  perspective: 1200px; 
+  position: relative;
+} */
+
+
+.embla__container {
+  display: flex;
+  padding: 1rem;
+  box-sizing: border-box;
+  align-items: center;
+}
+
+.embla__slide {
+  flex: 0 0 calc((100% - (8rem * 2)) / 3); /* 3 slides + two gaps = viewport */
+  margin: 0 8rem; /* half the desired total gap */
+  height: 600px;
+  user-select: none;
+  cursor: grab;
+}
+
+
+.embla__slide__inner {
+  transform-style: preserve-3d;
+  transform-origin: bottom center; /* anchor at bottom */
+  backface-visibility: hidden;
+}
+
+
+/* ensure a strong 3D context and pivot from the bottom edge */
+.embla__viewport {
+  overflow: hidden;
+  width: 100%;
+  perspective: 1500px;          /* strong 3D effect */
+  perspective-origin: 50% 100%; /* anchor at bottom */
+  position: relative;
+}
+
+.embla__slide__inner {
+  width: 100%;
+  height: 600px;
+  border-radius: 0.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  color: white;
+  background: cornflowerblue;
+  transform-style: preserve-3d;
+  transform-origin: center bottom;  /* pivot at bottom edge */
+  backface-visibility: hidden;
+  will-change: transform, opacity;
+  transition: transform 320ms cubic-bezier(.2,.9,.2,1), box-shadow 320ms;
+}
+
+
+/* while dragging, remove transitions so it follows finger/flick exactly */
+.embla__viewport.is-dragging .embla__slide__inner {
+  transition: none;
+  cursor: grabbing;
+}
+
+.embla__slide__inner[data-center="true"] {
+  box-shadow: 0 22px 50px rgba(6, 20, 60, 0.18);
+  transform: translateZ(90px) scale(1); /* keeps center popped forward */
+}
+
+.slide-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;  /* ensures the image fills the slide */
+  border-radius: 0.6rem;
+}
+
+
+.slide-button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+
+#slide-button {
+  padding: 24px 36px;
+  border: none;
+  border-radius: 24px;
+  background-color: #011f7f;
+  font-family: 'Futura';
+  font-size: 18px;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#slide-button:hover {
+  background-color: #042c7f;
+}
+
+
+
+
+.carousel {
+  margin: 100px auto;
+  width: 100%;
+  display: flex;
+  overflow-x: auto;
+}
+
+.carousel::-webkit-scrollbar {
+  display: none;
+}
+
+.group{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1em;
+  animation: spin 20s infinite linear;
+  padding-right: 1em;
+}
+
+.card {
+  flex: 0 0 10em;
+  height: 10em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #011f7f; /* matches your accent */
+  border-radius: 1rem;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-8px) scale(1.05);
+  box-shadow: 0 16px 32px rgba(0,0,0,0.25);
+}
+
+
+.card-image {
+  width: 60%;
+  height: auto;
+  object-fit: contain;
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-6px); }
+  100% { transform: translateY(0px); }
+}
+.card-image {
+  animation: float 4s ease-in-out infinite;
+}
+
+
+@keyframes spin {
+  from {translate: 0;}
+  to {translate: -100%;}
+}
+
+
+.contact {
+  background-color: #011f7f; /* deep accent like your "Me" circle */
+  padding: 6rem 2rem;
+  margin-top: 8rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.contact-inner {
+  text-align: center;
+  max-width: 800px;
+}
+
+.contact h2 {
+  font-size: 64px;
+  color: #b8f9ff; /* same light cyan as headers */
+  margin-bottom: 1rem;
+}
+
+.contact p {
+  font-size: 20px;
+  color: #b8f9ff;
+  margin-bottom: 2.5rem;
+}
+
+.contact-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+}
+
+.contact-button {
+  padding: 1rem 2rem;
+  background-color: #0779fe; /* matches page bg */
+  color: #fff;
+  font-size: 18px;
+  font-family: "Futura", sans-serif;
+  border-radius: 2rem;
+  text-decoration: none;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.contact-button:hover {
+  background-color: #042c7f;
+  transform: translateY(-4px);
+}
