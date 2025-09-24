@@ -4,6 +4,18 @@
   box-sizing: border-box;
 }
 
+/* Hide scrollbar but keep scrolling */
+html, body {
+  overflow-y: scroll; /* keeps layout consistent */
+  scrollbar-width: none; /* Firefox */
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Edge */
+}
+
+
 @font-face {
   font-family: "Futura";
   src: url("futura-now-headline/FuturaNowHeadlineMedium.ttf") format("truetype");
